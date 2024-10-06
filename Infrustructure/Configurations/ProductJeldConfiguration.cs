@@ -9,15 +9,11 @@ using System.Threading.Tasks;
 
 namespace Infrustructure.Configurations
 {
-    public class ProductConfiguration : IEntityTypeConfiguration<Product>
+    public class ProductJeldConfiguration : IEntityTypeConfiguration<ProductJeld>
     {
-        public void Configure(EntityTypeBuilder<Product> builder)
+        public void Configure(EntityTypeBuilder<ProductJeld> builder)
         {
             builder.HasKey(p => p.Id);
-            builder.Property(p => p.Circulation).HasColumnType("nvarchar(max)");
-            builder.Property(p => p.CopyCount).HasColumnType("nvarchar(max)");
-            builder.Property(p => p.PageCount).HasColumnType("nvarchar(max)");
-            builder.Property(p => p.IsCalculatePrice).HasDefaultValueSql("1");
             builder.Property(p => p.FileExtension).HasColumnType("nvarchar(50)");
             builder.HasQueryFilter(p => p.IsDeleted == false);
 

@@ -1,9 +1,4 @@
 ﻿using Domain.ModelConfigs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Models
 {
@@ -15,5 +10,7 @@ namespace Domain.Models
         public string Name { get; set; }
         public int? SheetCount { get; set; }
         public int? SheetDimensionId { get; set; }
+        public Product Product { get; set; } = null!;
+        public ICollection<ProductDeliverSize> ProductDeliverSizes { get; set; } = [];
     }
 }

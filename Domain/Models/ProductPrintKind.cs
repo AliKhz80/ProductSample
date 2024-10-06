@@ -1,9 +1,4 @@
 ﻿using Domain.ModelConfigs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Models
 {
@@ -12,5 +7,7 @@ namespace Domain.Models
         public int ProductId { get; set; }
         public int PrintKindId { get; set; }
         public bool IsJeld { get; set; }
+        public Product Product { get; set; } = null!;
+
     }
 }

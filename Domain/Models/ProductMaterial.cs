@@ -1,9 +1,4 @@
 ﻿using Domain.ModelConfigs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Models
 {
@@ -17,5 +12,7 @@ namespace Domain.Models
         public bool IsCustomCirculation { get; set; }
         public bool IsCombinedMaterial { get; set; }
         public int Weight { get; set; }
+        public Product Product { get; set; } = null!;
+        public ICollection<ProductMaterialAttribute> ProductMaterialAttributes { get; set; } = [];
     }
 }

@@ -1,9 +1,4 @@
 ﻿using Domain.ModelConfigs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Models
 {
@@ -11,5 +6,7 @@ namespace Domain.Models
     {
         public int ProductMaterialId { get; set; }
         public int MaterialAttributeId { get; set; }
+        public ProductMaterial ProductMaterial { get; set; } = null!;
+
     }
 }

@@ -1,9 +1,4 @@
 ﻿using Domain.ModelConfigs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Models
 {
@@ -19,5 +14,6 @@ namespace Domain.Models
         public int? ProductMaterialAttributeId { get; set; }
         public int IsJeld { get; set; }
         public int ProductPrintKindId { get; set; }
+        public ICollection<ProductAdtPrice> ProductAdtPrices { get; set; } = [];
     }
 }
