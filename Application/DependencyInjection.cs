@@ -1,5 +1,6 @@
 ﻿
 using Application.Config;
+using Application.Features.Product;
 using Domain.Interfaces;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,13 +21,17 @@ public static class DependencyInjection
 
     private static IServiceCollection RegisterMediatR(this IServiceCollection services)
     {
-       
+        services.AddMediatR(cfg =>
+        {
+            cfg.RegisterServicesFromAssemblyContaining(typeof(ProductModelMapper));
+        });
         return services;
     }
 
     private static IServiceCollection RegisterValidator(this IServiceCollection services)
     {
 
+        services.AddValidatorsFromAssemblyContaining(typeof(ProductModelMapper));
 
         return services;
 

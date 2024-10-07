@@ -82,7 +82,7 @@ public sealed class GlobalExceptionHandler : IExceptionHandler
 
     private async Task ErrorHandlerSetting(int statusCode, Exception ex)
     {
-        _logger.LogError(
+         _logger.LogError(
             "Error in GlobalExceptionHandler " +
             "at {datetime}, " +
             "with status code {statusCode} " +

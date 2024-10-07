@@ -5,7 +5,7 @@ namespace Domain.Models
     public class ProductDeliver : TrackableEntity
     {
         public int ProductId { get; set; }
-        public string Name { get; set; } = "50";
+        public string Name { get; set; } = null!;
         public bool isIncreased { get; set; }
         public int StartCirculation { get; set; }
         public int EndCirculation { get; set; }

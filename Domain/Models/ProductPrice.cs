@@ -4,7 +4,7 @@ namespace Domain.Models
 {
     public class ProductPrice : TrackableEntity
     {
-        public double price { get; set; }
+        public double Price { get; set; }
         public int Circulation { get; set; }
         public int IsDoubleSided { get; set; }
         public int? PageCount { get; set; }

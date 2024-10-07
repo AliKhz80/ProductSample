@@ -1,17 +1,6 @@
 ﻿using Application;
-using Application.Config;
-using Application.Features.SampleModel;
 using BaseSample.Middlewares;
-using Domain.Interfaces;
-using Domain.Interfaces.BusinessIRepositories;
-using FluentValidation;
 using Infrustructure;
-using Infrustructure.BusinessRepositories;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace BaseSample.Config;
 

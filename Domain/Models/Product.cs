@@ -24,7 +24,7 @@ namespace Domain.Models
         public double? MinLength { get; set; }
         public double? MaxLength { get; set; }
         public int SheetDimensionId { get; set; }
-        public string FileExtension { get; set; } = string.Empty;
+        public string FileExtension { get; set; } = null!;
         public bool IsCmyk { get; set; }
         public double CutMargin { get; set; }
         public double PrintMargin { get; set; }
