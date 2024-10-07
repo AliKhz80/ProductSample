@@ -61,24 +61,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Address format is not valid!.
-        /// </summary>
-        public static string Address {
-            get {
-                return ResourceManager.GetString("Address", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to age Must be greater than or equal to 18.
-        /// </summary>
-        public static string AgeOver18 {
-            get {
-                return ResourceManager.GetString("AgeOver18", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The submitted date is invalid.
         /// </summary>
         public static string DateTime {

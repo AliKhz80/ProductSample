@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BindDataError" xml:space="preserve">
-    <value>There was a problem loading the data</value>
+    <value>مشکلی در بازیابی اطلاعات رخ داد!</value>
   </data>
   <data name="DataExisted" xml:space="preserve">
-    <value>Duplicate data cannot be entered</value>
+    <value>این اطلاعات در سیستم وجود دارد!</value>
   </data>
   <data name="DataFormat" xml:space="preserve">
-    <value>The format of the information sent is incorrect</value>
+    <value>فرمت اطلاعات ورودی صحیح نمی باشد!</value>
   </data>
   <data name="InsertDataError" xml:space="preserve">
-    <value>There is a problem in registering information</value>
+    <value>مشکلی در ثبت اطلاعات رخ داد!</value>
   </data>
   <data name="NotFoundData" xml:space="preserve">
-    <value>Not Found!</value>
+    <value>اطلاعات یافت نشد!</value>
   </data>
   <data name="UpdateDatatError" xml:space="preserve">
-    <value>There is a problem editing information</value>
+    <value>مشکلی در ویرایش اطلاعات رخ داد!</value>
   </data>
 </root>

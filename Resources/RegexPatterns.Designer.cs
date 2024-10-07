@@ -61,11 +61,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ^[a-zA-Z0-9 ,]*$.
+        ///   Looks up a localized string similar to ^[a-zA-Z0-9,- ]*$.
         /// </summary>
-        public static string Address {
+        public static string Circulation {
             get {
-                return ResourceManager.GetString("Address", resourceCulture);
+                return ResourceManager.GetString("Circulation", resourceCulture);
             }
         }
         
@@ -79,11 +79,20 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ^[a-zA-Z0-9 ,-]*$.
+        ///   Looks up a localized string similar to ^[0-9,]*$.
         /// </summary>
-        public static string Comment {
+        public static string CopyCount {
             get {
-                return ResourceManager.GetString("Comment", resourceCulture);
+                return ResourceManager.GetString("CopyCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ^[a-zA-Z0-9 ,-.]*$.
+        /// </summary>
+        public static string FileExtention {
+            get {
+                return ResourceManager.GetString("FileExtention", resourceCulture);
             }
         }
         
@@ -97,20 +106,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ^[0-9]*$.
+        ///   Looks up a localized string similar to ^[0-9,]*$.
         /// </summary>
-        public static string NationalCode {
+        public static string PageCount {
             get {
-                return ResourceManager.GetString("NationalCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ^[0-9+]*$.
-        /// </summary>
-        public static string phoneNumber {
-            get {
-                return ResourceManager.GetString("phoneNumber", resourceCulture);
+                return ResourceManager.GetString("PageCount", resourceCulture);
             }
         }
     }

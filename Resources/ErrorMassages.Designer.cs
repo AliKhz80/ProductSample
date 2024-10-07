@@ -61,7 +61,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There was a problem loading the data.
+        ///   Looks up a localized string similar to مشکلی در بازیابی اطلاعات رخ داد!.
         /// </summary>
         public static string BindDataError {
             get {
@@ -70,7 +70,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Duplicate data cannot be entered.
+        ///   Looks up a localized string similar to این اطلاعات در سیستم وجود دارد!.
         /// </summary>
         public static string DataExisted {
             get {
@@ -79,7 +79,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The format of the information sent is incorrect.
+        ///   Looks up a localized string similar to فرمت اطلاعات ورودی صحیح نمی باشد!.
         /// </summary>
         public static string DataFormat {
             get {
@@ -88,7 +88,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is a problem in registering information.
+        ///   Looks up a localized string similar to مشکلی در ثبت اطلاعات رخ داد!.
         /// </summary>
         public static string InsertDataError {
             get {
@@ -97,7 +97,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not Found!.
+        ///   Looks up a localized string similar to اطلاعات یافت نشد!.
         /// </summary>
         public static string NotFoundData {
             get {
@@ -106,7 +106,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is a problem editing information.
+        ///   Looks up a localized string similar to مشکلی در ویرایش اطلاعات رخ داد!.
         /// </summary>
         public static string UpdateDatatError {
             get {

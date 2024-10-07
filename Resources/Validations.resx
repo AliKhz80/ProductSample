@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Address" xml:space="preserve">
-    <value>Address format is not valid!</value>
-  </data>
-  <data name="AgeOver18" xml:space="preserve">
-    <value>age Must be greater than or equal to 18</value>
-  </data>
   <data name="DateTime" xml:space="preserve">
     <value>The submitted date is invalid</value>
   </data>

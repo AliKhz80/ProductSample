@@ -117,22 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Address" xml:space="preserve">
-    <value>^[a-zA-Z0-9 ,]*$</value>
+  <data name="Circulation" xml:space="preserve">
+    <value>^[a-zA-Z0-9,- ]*$</value>
   </data>
   <data name="Code" xml:space="preserve">
     <value>^[0-9]*$</value>
   </data>
-  <data name="Comment" xml:space="preserve">
-    <value>^[a-zA-Z0-9 ,-]*$</value>
+  <data name="CopyCount" xml:space="preserve">
+    <value>^[0-9,]*$</value>
+  </data>
+  <data name="FileExtention" xml:space="preserve">
+    <value>^[a-zA-Z0-9 ,-.]*$</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>^[a-zA-Z0-9 ]*$</value>
   </data>
-  <data name="NationalCode" xml:space="preserve">
-    <value>^[0-9]*$</value>
-  </data>
-  <data name="phoneNumber" xml:space="preserve">
-    <value>^[0-9+]*$</value>
+  <data name="PageCount" xml:space="preserve">
+    <value>^[0-9,]*$</value>
   </data>
 </root>
