@@ -8,6 +8,8 @@ namespace Domain.Models
         public int PrintKindId { get; set; }
         public bool IsJeld { get; set; }
         public Product Product { get; set; } = null!;
+        public ICollection<ProductPrice> ProductPrices { get; set; } = [];
+
 
     }
 }

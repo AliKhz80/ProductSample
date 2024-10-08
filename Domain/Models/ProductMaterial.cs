@@ -14,5 +14,7 @@ namespace Domain.Models
         public int Weight { get; set; }
         public Product Product { get; set; } = null!;
         public ICollection<ProductMaterialAttribute> ProductMaterialAttributes { get; set; } = [];
+        public ICollection<ProductPrice> ProductPrices { get; set; } = [];
+
     }
 }

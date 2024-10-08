@@ -7,6 +7,8 @@ namespace Domain.Models
         public int ProductMaterialId { get; set; }
         public int MaterialAttributeId { get; set; }
         public ProductMaterial ProductMaterial { get; set; } = null!;
+        public ICollection<ProductPrice> ProductPrices { get; set; } = [];
+
 
     }
 }

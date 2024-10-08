@@ -12,5 +12,6 @@ namespace Domain.Models
         public int? SheetDimensionId { get; set; }
         public Product Product { get; set; } = null!;
         public ICollection<ProductDeliverSize> ProductDeliverSizes { get; set; } = [];
+        public ICollection<ProductPrice> ProductPrices { get; set; } = [];
     }
 }
