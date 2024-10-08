@@ -1,5 +1,7 @@
-﻿using Application.Features.Product.ViewModels;
+﻿using Application.Features.Product.Commands.CreateProductWithRelations;
+using Application.Features.Product.ViewModels;
 using AutoMapper;
+using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,8 @@ namespace Application.Features.Product
 {
     public static class ProductModelMapper
     {
-     
+
+       
+
     }
 }

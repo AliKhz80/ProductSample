@@ -106,7 +106,7 @@ namespace Application.Features.Product.Commands.CreateProductWithRelations
         public int ProductPriceCirculation { get; set; }
         public int IsDoubleSided { get; set; }
         public int? ProductPricePageCount { get; set; }
-        public int? copyCount { get; set; }
+        public int? ProductPriceCopyCount { get; set; }
         public int ProductSizeId { get; set; }
         public int ProductMaterialId { get; set; }
         public int? ProductMaterialAttributeId { get; set; }
@@ -115,10 +115,10 @@ namespace Application.Features.Product.Commands.CreateProductWithRelations
 
         #endregion
 
-        #region ProductPriceKind
+        #region ProductPrintKind
 
         public int PrintKindId { get; set; }
-        public bool ProductPriceKindIsJeld { get; set; }
+        public bool ProductPrintKindIsJeld { get; set; }
 
         #endregion
 
