@@ -14,10 +14,10 @@ namespace Domain.Models
         public int? ProductMaterialAttributeId { get; set; }
         public int IsJeld { get; set; }
         public int ProductPrintKindId { get; set; }
-        public ProductSize ProductSize { get; set; } = null!;
-        public ProductMaterial ProductMaterial { get; set; } = null!;
-        public ProductMaterialAttribute ProductMaterialAttribute { get; set; } = null!;
-        public ProductPrintKind ProductPrintKind { get; set; } = null!;
-        public ICollection<ProductAdtPrice> ProductAdtPrices { get; set; } = [];
+        public virtual ProductSize ProductSize { get; set; } = null!;
+        public virtual ProductMaterial ProductMaterial { get; set; } = null!;
+        public virtual ProductMaterialAttribute ProductMaterialAttribute { get; set; } = null!;
+        public virtual ProductPrintKind ProductPrintKind { get; set; } = null!;
+        public virtual ICollection<ProductAdtPrice> ProductAdtPrices { get; set; } = [];
     }
 }

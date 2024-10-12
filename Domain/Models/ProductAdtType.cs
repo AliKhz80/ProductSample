@@ -6,8 +6,8 @@ namespace Domain.Models
     {
         public int ProductAdtId { get; set; }
         public int AdtTypeId { get; set; }
-        public ProductAdt ProductAdt { get; set; } = null!;
-        public ICollection<ProductAdtPrice> ProductAdtPrices { get; set; } = [];
+        public virtual ProductAdt ProductAdt { get; set; } = null!;
+        public virtual ICollection<ProductAdtPrice> ProductAdtPrices { get; set; } = [];
 
     }
 }

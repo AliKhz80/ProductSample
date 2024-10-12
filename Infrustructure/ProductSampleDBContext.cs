@@ -13,6 +13,20 @@ namespace Infrustructure
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            
+
+           
+
+           
+
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        }
+
+
+
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductAdt> ProductAdts { get; set; }
         public DbSet<ProductAdtPrice> ProductAdtPrices { get; set; }

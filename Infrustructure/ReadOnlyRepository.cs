@@ -3,6 +3,8 @@ using Domain.Interfaces;
 using Domain.ModelConfigs;
 using Domain.SpecificationConfig;
 using System.Data;
+using System.Linq;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Infrustructure;
 
@@ -11,8 +13,21 @@ public class ReadOnlyRepository<TEntity>(
     ) : RepositoryProperties<TEntity>(dbContext),IReadOnlyRepository<TEntity> where TEntity : Entity
 {
 
-    public async Task<TEntity?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+    public async Task<TEntity?> GetByIdAsync(Specification<TEntity> specification, int id, CancellationToken cancellationToken = default)
     {
+        var query = SetAsNoTracking;
+
+        if (specification.IncludeExpressions.Count != 0)
+        {
+            query = specification.IncludeExpressions.Aggregate(query,
+                (current, includeExpression) => current.Include(includeExpression));
+        }
+        if (specification.IncludeStrings.Count != 0)
+        {
+            query = specification.IncludeStrings.Aggregate(query,
+                (current, IncludeStrings) => current.Include(IncludeStrings));
+        }
+
         return await SetAsNoTracking.SingleOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
 
@@ -29,6 +44,18 @@ public class ReadOnlyRepository<TEntity>(
     public async Task<(int TotalCount, IReadOnlyList<TEntity> Data)> ListAsync(Specification<TEntity> specification, CancellationToken cancellationToken = default)
     {
         var query = SetAsNoTracking.Specify(specification);
+
+        if (specification.IncludeExpressions.Count != 0)
+        {
+            query = specification.IncludeExpressions.Aggregate(query,
+                (current, includeExpression) => current.Include(includeExpression));
+        }
+
+        if (specification.IncludeStrings.Count != 0)
+        {
+            query = specification.IncludeStrings.Aggregate(query,
+                (current, IncludeStrings) => current.Include(IncludeStrings));
+        }
 
         var totalCount = 0;
 

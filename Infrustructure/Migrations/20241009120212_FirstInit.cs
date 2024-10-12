@@ -6,40 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infrustructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class FirstInit : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "ProductPrices",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    price = table.Column<double>(type: "float", nullable: false),
-                    Circulation = table.Column<int>(type: "int", nullable: false),
-                    IsDoubleSided = table.Column<int>(type: "int", nullable: false),
-                    PageCount = table.Column<int>(type: "int", nullable: true),
-                    copyCount = table.Column<int>(type: "int", nullable: true),
-                    ProductSizeId = table.Column<int>(type: "int", nullable: false),
-                    ProductMaterialId = table.Column<int>(type: "int", nullable: false),
-                    ProductMaterialAttributeId = table.Column<int>(type: "int", nullable: true),
-                    IsJeld = table.Column<int>(type: "int", nullable: false),
-                    ProductPrintKindId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductPrices", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
@@ -53,7 +24,7 @@ namespace Infrustructure.Migrations
                     CopyCount = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PageCount = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PrintSide = table.Column<byte>(type: "tinyint", nullable: false),
-                    IsCalculatePrice = table.Column<bool>(type: "bit", nullable: false),
+                    IsCalculatePrice = table.Column<bool>(type: "bit", nullable: false, defaultValueSql: "1"),
                     IsCustomCirculation = table.Column<bool>(type: "bit", nullable: false),
                     IsCustomSize = table.Column<bool>(type: "bit", nullable: false),
                     IsCustomPage = table.Column<int>(type: "int", nullable: true),
@@ -66,7 +37,7 @@ namespace Infrustructure.Migrations
                     MinLength = table.Column<double>(type: "float", nullable: true),
                     MaxLength = table.Column<double>(type: "float", nullable: true),
                     SheetDimensionId = table.Column<int>(type: "int", nullable: false),
-                    FileExtension = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FileExtension = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     IsCmyk = table.Column<bool>(type: "bit", nullable: false),
                     CutMargin = table.Column<double>(type: "float", nullable: false),
                     PrintMargin = table.Column<double>(type: "float", nullable: false),
@@ -156,7 +127,7 @@ namespace Infrustructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     PrintSide = table.Column<byte>(type: "tinyint", nullable: false),
-                    FileExtension = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FileExtension = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     IsCmyk = table.Column<bool>(type: "bit", nullable: false),
                     CutMargin = table.Column<double>(type: "float", nullable: true),
                     PrintMargin = table.Column<double>(type: "float", nullable: true),
@@ -188,7 +159,7 @@ namespace Infrustructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     MaterialId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(50)", nullable: true),
                     IsJeld = table.Column<bool>(type: "bit", nullable: false),
                     Required = table.Column<bool>(type: "bit", nullable: false),
                     IsCustomCirculation = table.Column<bool>(type: "bit", nullable: false),
@@ -243,7 +214,7 @@ namespace Infrustructure.Migrations
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     Length = table.Column<double>(type: "float", nullable: false),
                     width = table.Column<double>(type: "float", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     SheetCount = table.Column<int>(type: "int", nullable: true),
                     SheetDimensionId = table.Column<int>(type: "int", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -327,8 +298,57 @@ namespace Infrustructure.Migrations
                         name: "FK_ProductDeliverSizes_ProductSizes_ProductSizeId",
                         column: x => x.ProductSizeId,
                         principalTable: "ProductSizes",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductPrices",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Price = table.Column<double>(type: "float", nullable: false),
+                    Circulation = table.Column<int>(type: "int", nullable: false),
+                    IsDoubleSided = table.Column<int>(type: "int", nullable: false),
+                    PageCount = table.Column<int>(type: "int", nullable: true),
+                    copyCount = table.Column<int>(type: "int", nullable: true),
+                    ProductSizeId = table.Column<int>(type: "int", nullable: false),
+                    ProductMaterialId = table.Column<int>(type: "int", nullable: false),
+                    ProductMaterialAttributeId = table.Column<int>(type: "int", nullable: true),
+                    IsJeld = table.Column<int>(type: "int", nullable: false),
+                    ProductPrintKindId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductPrices", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductPrices_ProductMaterialAttributes_ProductMaterialAttributeId",
+                        column: x => x.ProductMaterialAttributeId,
+                        principalTable: "ProductMaterialAttributes",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_ProductPrices_ProductMaterials_ProductMaterialId",
+                        column: x => x.ProductMaterialId,
+                        principalTable: "ProductMaterials",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductPrices_ProductPrintKinds_ProductPrintKindId",
+                        column: x => x.ProductPrintKindId,
+                        principalTable: "ProductPrintKinds",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_ProductPrices_ProductSizes_ProductSizeId",
+                        column: x => x.ProductSizeId,
+                        principalTable: "ProductSizes",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -362,14 +382,12 @@ namespace Infrustructure.Migrations
                         name: "FK_ProductAdtPrices_ProductAdts_ProductAdtId",
                         column: x => x.ProductAdtId,
                         principalTable: "ProductAdts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_ProductAdtPrices_ProductPrices_ProductPriceId",
                         column: x => x.ProductPriceId,
                         principalTable: "ProductPrices",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -388,13 +406,18 @@ namespace Infrustructure.Migrations
                 column: "ProductPriceId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProductAdts_ProductId",
+                table: "ProductAdts",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProductAdtTypes_ProductAdtId",
                 table: "ProductAdtTypes",
                 column: "ProductAdtId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductAdts_ProductId",
-                table: "ProductAdts",
+                name: "IX_ProductDelivers_ProductId",
+                table: "ProductDelivers",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
@@ -406,11 +429,6 @@ namespace Infrustructure.Migrations
                 name: "IX_ProductDeliverSizes_ProductSizeId",
                 table: "ProductDeliverSizes",
                 column: "ProductSizeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProductDelivers_ProductId",
-                table: "ProductDelivers",
-                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductJelds_ProductId",
@@ -426,6 +444,26 @@ namespace Infrustructure.Migrations
                 name: "IX_ProductMaterials_ProductId",
                 table: "ProductMaterials",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductPrices_ProductMaterialAttributeId",
+                table: "ProductPrices",
+                column: "ProductMaterialAttributeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductPrices_ProductMaterialId",
+                table: "ProductPrices",
+                column: "ProductMaterialId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductPrices_ProductPrintKindId",
+                table: "ProductPrices",
+                column: "ProductPrintKindId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductPrices_ProductSizeId",
+                table: "ProductPrices",
+                column: "ProductSizeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductPrintKinds_ProductId",
@@ -451,12 +489,6 @@ namespace Infrustructure.Migrations
                 name: "ProductJelds");
 
             migrationBuilder.DropTable(
-                name: "ProductMaterialAttributes");
-
-            migrationBuilder.DropTable(
-                name: "ProductPrintKinds");
-
-            migrationBuilder.DropTable(
                 name: "ProductAdtTypes");
 
             migrationBuilder.DropTable(
@@ -466,13 +498,19 @@ namespace Infrustructure.Migrations
                 name: "ProductDelivers");
 
             migrationBuilder.DropTable(
+                name: "ProductAdts");
+
+            migrationBuilder.DropTable(
+                name: "ProductMaterialAttributes");
+
+            migrationBuilder.DropTable(
+                name: "ProductPrintKinds");
+
+            migrationBuilder.DropTable(
                 name: "ProductSizes");
 
             migrationBuilder.DropTable(
                 name: "ProductMaterials");
-
-            migrationBuilder.DropTable(
-                name: "ProductAdts");
 
             migrationBuilder.DropTable(
                 name: "Products");

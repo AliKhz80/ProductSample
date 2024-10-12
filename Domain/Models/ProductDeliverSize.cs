@@ -6,7 +6,7 @@ namespace Domain.Models
     {
         public int ProductSizeId { get; set; }
         public int ProductDeliverId { get; set; }
-        public ProductSize ProductSize { get; set; } = null!;
-        public ProductDeliver ProductDeliver { get; set; } = null!;
+        public virtual ProductSize ProductSize { get; set; } = null!;
+        public virtual ProductDeliver ProductDeliver { get; set; } = null!;
     }
 }

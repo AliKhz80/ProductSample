@@ -10,9 +10,9 @@ namespace Domain.Models
         public byte? Side { get; set; }
         public int? Count { get; set; }
         public bool IsJeld { get; set; }
-        public Product Product { get; set; } = null!;
-        public ICollection<ProductAdtPrice> ProductAdtPrices { get; set; } = null!;
-        public ICollection<ProductAdtType> ProductAdtTypes { get; set; } = null!;
+        public virtual Product Product { get; set; } = null!;
+        public virtual ICollection<ProductAdtPrice> ProductAdtPrices { get; set; } = null!;
+        public virtual ICollection<ProductAdtType> ProductAdtTypes { get; set; } = null!;
 
     }
 }

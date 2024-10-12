@@ -12,8 +12,8 @@ namespace Domain.Models
         public byte PrintSide { get; set; }
         public double Price { get; set; }
         public byte CalcType { get; set; }
-        public Product Product { get; set; } = null!;
-        public ICollection<ProductDeliverSize> ProductDeliverSizes { get; set; } = [];
+        public virtual Product Product { get; set; } = null!;
+        public virtual ICollection<ProductDeliverSize> ProductDeliverSizes { get; set; } = [];
 
     }
 }

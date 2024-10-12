@@ -11,6 +11,6 @@ namespace Domain.Models
         public double? CutMargin { get; set; }
         public double? PrintMargin { get; set; }
         public bool IsCheckFile { get; set; }
-        public Product Product { get; set; } = null!;
+        public virtual Product Product { get; set; } = null!;
     }
 }

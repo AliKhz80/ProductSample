@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infrustructure.Configurations
 {
-    public class ProductDelivarConfiguration : IEntityTypeConfiguration<ProductDeliver>
+    public class ProductDeliverConfiguration : IEntityTypeConfiguration<ProductDeliver>
     {
         public void Configure(EntityTypeBuilder<ProductDeliver> builder)
         {

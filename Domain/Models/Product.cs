@@ -29,12 +29,12 @@ namespace Domain.Models
         public double CutMargin { get; set; }
         public double PrintMargin { get; set; }
         public bool IsCheckFile { get; set; }
-        public ICollection<ProductAdt> ProductAdts { get; set; } = [];
-        public ICollection<ProductDeliver> ProductDelivers { get; set; } = [];
-        public ICollection<ProductJeld> ProductJelds { get; set; } = [];
-        public ICollection<ProductMaterial> ProductMaterials { get; set; } = [];
-        public ICollection<ProductPrintKind> ProductPrintKinds { get; set; } = [];
-        public ICollection<ProductSize> ProductSizes { get; set; } = [];
+        public virtual ICollection<ProductAdt> ProductAdts { get; set; } = [];
+        public virtual ICollection<ProductDeliver> ProductDelivers { get; set; } = [];
+        public virtual ICollection<ProductJeld> ProductJelds { get; set; } = [];
+        public virtual ICollection<ProductMaterial> ProductMaterials { get; set; } = [];
+        public virtual ICollection<ProductPrintKind> ProductPrintKinds { get; set; } = [];
+        public virtual ICollection<ProductSize> ProductSizes { get; set; } = [];
 
     }
 }

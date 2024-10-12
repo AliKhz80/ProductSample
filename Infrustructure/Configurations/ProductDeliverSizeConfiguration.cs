@@ -9,11 +9,17 @@ using System.Threading.Tasks;
 
 namespace Infrustructure.Configurations
 {
-    public class ProductDelivarSizeConfiguration : IEntityTypeConfiguration<ProductDeliverSize>
+    public class ProductDeliverSizeConfiguration : IEntityTypeConfiguration<ProductDeliverSize>
     {
         public void Configure(EntityTypeBuilder<ProductDeliverSize> builder)
         {
             builder.HasKey(p => p.Id);
+            builder
+                .HasOne(p => p.ProductSize)
+                .WithMany(p => p.ProductDeliverSizes)
+                .HasForeignKey(p => p.ProductSizeId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
         }
     }
 }

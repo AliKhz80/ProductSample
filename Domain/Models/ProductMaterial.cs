@@ -12,9 +12,9 @@ namespace Domain.Models
         public bool IsCustomCirculation { get; set; }
         public bool IsCombinedMaterial { get; set; }
         public int Weight { get; set; }
-        public Product Product { get; set; } = null!;
-        public ICollection<ProductMaterialAttribute> ProductMaterialAttributes { get; set; } = [];
-        public ICollection<ProductPrice> ProductPrices { get; set; } = [];
+        public virtual Product Product { get; set; } = null!;
+        public virtual ICollection<ProductMaterialAttribute> ProductMaterialAttributes { get; set; } = [];
+        public virtual ICollection<ProductPrice> ProductPrices { get; set; } = [];
 
     }
 }

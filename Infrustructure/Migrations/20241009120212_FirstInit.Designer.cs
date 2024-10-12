@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrustructure.Migrations
 {
     [DbContext(typeof(ProductSampleDBContext))]
-    [Migration("20241006222421_Init")]
-    partial class Init
+    [Migration("20241009120212_FirstInit")]
+    partial class FirstInit
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,10 +58,12 @@ namespace Infrustructure.Migrations
 
                     b.Property<string>("FileExtension")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<bool>("IsCalculatePrice")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValueSql("1");
 
                     b.Property<bool>("IsCheckFile")
                         .HasColumnType("bit");
@@ -385,7 +387,7 @@ namespace Infrustructure.Migrations
 
                     b.Property<string>("FileExtension")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<bool>("IsCheckFile")
                         .HasColumnType("bit");
@@ -457,7 +459,7 @@ namespace Infrustructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -540,6 +542,9 @@ namespace Infrustructure.Migrations
                     b.Property<int?>("PageCount")
                         .HasColumnType("int");
 
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
                     b.Property<int?>("ProductMaterialAttributeId")
                         .HasColumnType("int");
 
@@ -562,10 +567,15 @@ namespace Infrustructure.Migrations
                     b.Property<int?>("copyCount")
                         .HasColumnType("int");
 
-                    b.Property<double>("price")
-                        .HasColumnType("float");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductMaterialAttributeId");
+
+                    b.HasIndex("ProductMaterialId");
+
+                    b.HasIndex("ProductPrintKindId");
+
+                    b.HasIndex("ProductSizeId");
 
                     b.ToTable("ProductPrices");
                 });
@@ -624,7 +634,7 @@ namespace Infrustructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -668,7 +678,6 @@ namespace Infrustructure.Migrations
                     b.HasOne("Domain.Models.ProductAdt", "ProductAdt")
                         .WithMany("ProductAdtPrices")
                         .HasForeignKey("ProductAdtId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.Models.ProductAdtType", "ProductAdtType")
@@ -680,7 +689,6 @@ namespace Infrustructure.Migrations
                     b.HasOne("Domain.Models.ProductPrice", "ProductPrice")
                         .WithMany("ProductAdtPrices")
                         .HasForeignKey("ProductPriceId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ProductAdt");
@@ -723,7 +731,6 @@ namespace Infrustructure.Migrations
                     b.HasOne("Domain.Models.ProductSize", "ProductSize")
                         .WithMany("ProductDeliverSizes")
                         .HasForeignKey("ProductSizeId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ProductDeliver");
@@ -762,6 +769,37 @@ namespace Infrustructure.Migrations
                         .IsRequired();
 
                     b.Navigation("ProductMaterial");
+                });
+
+            modelBuilder.Entity("Domain.Models.ProductPrice", b =>
+                {
+                    b.HasOne("Domain.Models.ProductMaterialAttribute", "ProductMaterialAttribute")
+                        .WithMany("ProductPrices")
+                        .HasForeignKey("ProductMaterialAttributeId");
+
+                    b.HasOne("Domain.Models.ProductMaterial", "ProductMaterial")
+                        .WithMany("ProductPrices")
+                        .HasForeignKey("ProductMaterialId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.ProductPrintKind", "ProductPrintKind")
+                        .WithMany("ProductPrices")
+                        .HasForeignKey("ProductPrintKindId")
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.ProductSize", "ProductSize")
+                        .WithMany("ProductPrices")
+                        .HasForeignKey("ProductSizeId")
+                        .IsRequired();
+
+                    b.Navigation("ProductMaterial");
+
+                    b.Navigation("ProductMaterialAttribute");
+
+                    b.Navigation("ProductPrintKind");
+
+                    b.Navigation("ProductSize");
                 });
 
             modelBuilder.Entity("Domain.Models.ProductPrintKind", b =>
@@ -821,6 +859,13 @@ namespace Infrustructure.Migrations
             modelBuilder.Entity("Domain.Models.ProductMaterial", b =>
                 {
                     b.Navigation("ProductMaterialAttributes");
+
+                    b.Navigation("ProductPrices");
+                });
+
+            modelBuilder.Entity("Domain.Models.ProductMaterialAttribute", b =>
+                {
+                    b.Navigation("ProductPrices");
                 });
 
             modelBuilder.Entity("Domain.Models.ProductPrice", b =>
@@ -828,9 +873,16 @@ namespace Infrustructure.Migrations
                     b.Navigation("ProductAdtPrices");
                 });
 
+            modelBuilder.Entity("Domain.Models.ProductPrintKind", b =>
+                {
+                    b.Navigation("ProductPrices");
+                });
+
             modelBuilder.Entity("Domain.Models.ProductSize", b =>
                 {
                     b.Navigation("ProductDeliverSizes");
+
+                    b.Navigation("ProductPrices");
                 });
 #pragma warning restore 612, 618
         }
